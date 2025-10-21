@@ -24,7 +24,8 @@ def download_and_save_mnist(save_path="lab_1/data/mnist_data.npz"):
 
 
 def normalize_mnist(
-    npz_path="lab_1/data/mnist_data.npz", save_path="lab_1/data/mnist_data_normalized.npz"
+    npz_path="lab_1/data/mnist_data.npz",
+    save_path="lab_1/data/mnist_data_normalized.npz",
 ):
     data = np.load(npz_path)
     X_train = data["X_train"].astype(np.float32)
