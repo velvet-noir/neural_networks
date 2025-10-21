@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.datasets import fetch_openml
 
 
-def download_and_save_mnist(save_path="data/mnist_data.npz"):
+def download_and_save_mnist(save_path="lab_1/data/mnist_data.npz"):
     print("Загрузка MNIST с OpenML...")
     mnist = fetch_openml("mnist_784", version=1, as_frame=False, parser="liac-arff")
 
@@ -24,7 +24,7 @@ def download_and_save_mnist(save_path="data/mnist_data.npz"):
 
 
 def normalize_mnist(
-    npz_path="data/mnist_data.npz", save_path="data/mnist_data_normalized.npz"
+    npz_path="lab_1/data/mnist_data.npz", save_path="lab_1/data/mnist_data_normalized.npz"
 ):
     data = np.load(npz_path)
     X_train = data["X_train"].astype(np.float32)
@@ -43,8 +43,8 @@ def normalize_mnist(
 
 
 def one_hot_encode_mnist(
-    npz_path="data/mnist_data_normalized.npz",
-    save_path="data/mnist_data_ready.npz",
+    npz_path="lab_1/data/mnist_data_normalized.npz",
+    save_path="lab_1/data/mnist_data_ready.npz",
     num_classes=10,
 ):
     data = np.load(npz_path)
@@ -68,7 +68,7 @@ def one_hot_encode_mnist(
     print(f"Данные MNIST с one-hot метками сохранены в {save_path}")
 
 
-def show_mnist_sample(npz_path="data/mnist_data_ready.npz", index=0):
+def show_mnist_sample(npz_path="lab_1/data/mnist_data_ready.npz", index=0):
     data = np.load(npz_path)
     X_train = data["X_train"]
     y_train = data["y_train"]
@@ -81,7 +81,7 @@ def show_mnist_sample(npz_path="data/mnist_data_ready.npz", index=0):
     print(image)
 
 
-def check_mnist_shapes(npz_path="data/mnist_data_mini.npz"):
+def check_mnist_shapes(npz_path="lab_1/data/mnist_data_mini.npz"):
     data = np.load(npz_path)
     X_train, y_train = data["X_train"], data["y_train"]
     X_test, y_test = data["X_test"], data["y_test"]
@@ -93,8 +93,8 @@ def check_mnist_shapes(npz_path="data/mnist_data_mini.npz"):
 
 
 def create_mini_mnist(
-    npz_path="data/mnist_data_ready.npz",
-    save_path="data/mnist_data_mini.npz",
+    npz_path="lab_1/data/mnist_data_ready.npz",
+    save_path="lab_1/data/mnist_data_mini.npz",
     train_samples_per_class=200,
     test_samples=200,
     num_classes=10,
@@ -135,8 +135,8 @@ def create_mini_mnist(
 
 if __name__ == "__main__":
     # download_and_save_mnist()
-    normalize_mnist()
-    one_hot_encode_mnist()
+    # normalize_mnist()
+    # one_hot_encode_mnist()
     # show_mnist_sample()
     # check_mnist_shapes()
     create_mini_mnist()

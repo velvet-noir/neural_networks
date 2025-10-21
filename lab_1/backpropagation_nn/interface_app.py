@@ -38,7 +38,7 @@ class PaintApp:
         )
 
         self.nn = NeuralNetwork(784, 32, 10)
-        weights = np.load("backpropagation_nn/mnist_trained_weights.npz")
+        weights = np.load("lab_1/backpropagation_nn/mnist_trained_weights.npz")
         self.nn.W1 = weights["W1"]
         self.nn.b1 = weights["b1"]
         self.nn.W2 = weights["W2"]
@@ -73,7 +73,7 @@ class PaintApp:
         print(f"Предсказание сети: {predicted}")
 
     def test_random_image(self):
-        data = np.load("data/mnist_data_ready.npz")
+        data = np.load("lab_1/data/mnist_data_ready.npz")
         X_test = data["X_test"]
         y_test = data["y_test"]
 

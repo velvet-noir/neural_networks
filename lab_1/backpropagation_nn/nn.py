@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def load_mnist_mini(file_path="data/mnist_data_mini.npz"):
+def load_mnist_mini(file_path="lab_1/data/mnist_data_mini.npz"):
     data = np.load(file_path)
     X_train = data["X_train"]
     y_train = data["y_train"]
@@ -98,7 +98,7 @@ class NeuralNetwork:
         epochs: максимальное количество эпох
         epsilon: порог ошибки для досрочной остановки
         """
-        MIN_LEARNING_RATE = 0.0001
+        MIN_LEARNING_RATE = 0.0005
 
         for epoch in range(1, epochs + 1):
             np.random.shuffle(training_data)
@@ -186,7 +186,7 @@ class NeuralNetwork:
         return results, accuracy
 
 
-def load_mnist_mini_test(file_path="data/mnist_data_ready.npz"):
+def load_mnist_mini_test(file_path="lab_1/data/mnist_data_ready.npz"):
     """
     Загружает тестовую выборку мини-MNIST
     """
@@ -222,12 +222,12 @@ if __name__ == "__main__":
         test_data=test_data,
         test_interval=TEST_INTERVAL,
     )
-    nn.save_weights("backpropagation_nn/mnist_trained_weights.npz")
+    nn.save_weights("lab_1/backpropagation_nn/mnist_trained_weights.npz")
     print("Обучение завершено и веса сохранены.")
 
-    # weights = np.load("backpropagation_nn/mnist_trained_weights.npz")
-    # nn.W1 = weights["W1"]
-    # nn.b1 = weights["b1"]
-    # nn.W2 = weights["W2"]
-    # nn.b2 = weights["b2"]
-    # nn.test_random_samples(test_data)
+    weights = np.load("lab_1/backpropagation_nn/mnist_trained_weights.npz")
+    nn.W1 = weights["W1"]
+    nn.b1 = weights["b1"]
+    nn.W2 = weights["W2"]
+    nn.b2 = weights["b2"]
+    nn.test_random_samples(test_data)
