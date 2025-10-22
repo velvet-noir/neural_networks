@@ -1,5 +1,7 @@
 import os
+
 import numpy as np
+
 
 def load_drawings(folder="drawings"):
     X = []  # список изображений (flatten)
@@ -27,7 +29,8 @@ def load_drawings(folder="drawings"):
 
     return X, y
 
+
 if __name__ == "__main__":
-    # X, y = load_drawings("lab_2/drawings")
+    X, y = load_drawings("lab_2/drawings")
     print("Размер X:", X.shape)
     print("Метки классов:", np.unique(y, return_counts=True))

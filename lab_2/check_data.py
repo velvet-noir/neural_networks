@@ -1,6 +1,9 @@
-import numpy as np
 import random
-from load_drawings import load_drawings   # импортируй свою функцию из предыдущего файла
+
+import numpy as np
+from load_drawings import \
+    load_drawings  # импортируй свою функцию из предыдущего файла
+
 
 def check_dataset(folder="lab_2/drawings"):
     X, y = load_drawings(folder)

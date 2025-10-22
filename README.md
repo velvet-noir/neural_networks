@@ -8,12 +8,12 @@
 
 <!-- 1.2. Разделить их на классы (только для проверки результата, SOM обучается без меток). -->
 
-1.3. Нормализовать данные по признакам:
+<!-- 1.3. Нормализовать данные по признакам: -->
 
-X_norm = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
+<!-- X_norm = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0)) -->
 
 
-1.4. Проверить размерности (X.shape → (n, m)).
+<!-- 1.4. Проверить размерности (X.shape → (n, m)). -->
 
 2. Инициализация нейронной карты
 
@@ -30,7 +30,6 @@ X_norm = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
 2.3. Инициализировать веса нейронов:
 
 weights = np.random.rand(grid_x, grid_y, m)
-
 
 2.4. (опционально) Визуализировать начальные веса (для 2D случаев — точки на графике).
 
@@ -52,7 +51,6 @@ weights = np.random.rand(grid_x, grid_y, m)
 distances = np.linalg.norm(weights - x, axis=2)
 bmu_index = np.unravel_index(distances.argmin(), distances.shape)
 
-
 Обновить веса победителя и его соседей (см. пункт 4).
 
 3.3. После каждой эпохи:
@@ -70,16 +68,13 @@ bmu_index = np.unravel_index(distances.argmin(), distances.shape)
 
 dist_grid = np.sum((neuron_coords - bmu_coord)**2, axis=1)
 
-
 4.2. Применить гауссову функцию соседства:
 
 h = np.exp(-dist_grid / (2 * sigma_t**2))
 
-
 4.3. Обновить веса:
 
 weights += α_t * h[:, np.newaxis] * (x - weights)
-
 
 (при необходимости reshape h обратно в форму карты)
 
@@ -93,11 +88,9 @@ weights += α_t * h[:, np.newaxis] * (x - weights)
 alpha_0 = 0.1
 sigma_0 = max(grid_x, grid_y) / 2
 
-
 5.2. Задать константу убывания:
 
 tau = n_epochs / np.log(sigma_0)
-
 
 5.3. В каждой эпохе обновлять:
 
